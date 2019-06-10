@@ -1,17 +1,73 @@
 body {
     max-width: 700px;
     margin: auto;
+    padding: 30px;
+}
+
+/* Grid */
+    .grid .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .grid button {
+        flex: 1;
+        height: 60px;
+    }
+
+    .grid .status-Default {
+        background-color: #444
+    }
+
+    .grid .status-Ok {
+        background-color: #4cff00
+    }
+
+    .grid .status-Error {
+        background-color: #ff0000
+    }
+
+
+/* Controls */
+.controls {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
     padding: 15px;
-    font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+    display: flex;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #111;
-    line-height: 125%;
-    margin-top: 0.6em;
-    font-weight: normal;
+    .controls input[type="text"] {
+        flex: 1;
+        margin-right: 15px;
+    }
+
+    .controls input[type="submit"] {
+        width: 50px;
+        height: 35px;
+    }
+
+/* List */
+.list ul {
+    padding: 0px;
+}
+.listItem {
+    margin: 0;
+    border-bottom: 1px dotted #AAA;
+    padding: 10px;
+    display: flex;
 }
 
-p {
-    color: #444
-}
+    .listItem .name {
+        flex: 1;
+    }
+
+    .listItem .listControls {
+        height: 35px;
+    }
+
+        .listItem .listControls button {
+            height: 35px;
+            /*width: 35px;*/
+        }
