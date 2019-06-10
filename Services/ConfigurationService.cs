@@ -20,6 +20,7 @@ namespace DotnetDemo.Services
         public Configuration addConfiguration(Configuration configuration) { return _repository.saveConfiguration(configuration); }
 
         public Configuration updateConfiguration(Configuration configuration) { return _repository.updateConfiguration(configuration); }
+        public void deleteConfiguration(Guid id) { _repository.deleteConfiguration(id); }
     }
 
     public interface IConfigurationService
@@ -28,5 +29,6 @@ namespace DotnetDemo.Services
         IEnumerable<Configuration> getConfigurationList();
         Configuration addConfiguration(Configuration configuration);
         Configuration updateConfiguration(Configuration configuration);
+        void deleteConfiguration(Guid id);
     }
 }

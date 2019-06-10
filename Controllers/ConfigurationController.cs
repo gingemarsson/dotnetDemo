@@ -74,5 +74,17 @@ namespace DotnetDemo.Controllers
             };
             return _service.updateConfiguration(configuration);
         }
+
+        /// <summary>
+        /// Delete the specified configuration.
+        /// </summary>
+        /// <param name="id">The configuration to delete.</param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public ActionResult Delete([FromRoute] Guid id)
+        {
+            _service.deleteConfiguration(id);
+            return Ok();
+        }
     }
 }

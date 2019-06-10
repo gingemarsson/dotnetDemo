@@ -42,6 +42,14 @@ namespace DotnetDemo.Repositories
             }
             else { return null; }
         }
+        
+        public void deleteConfiguration(Guid id)
+        {
+            if (database.ContainsKey(id))
+            {
+                database.Remove(id);
+            }
+        }
     }
 
     public interface IConfigurationRepository
@@ -50,6 +58,7 @@ namespace DotnetDemo.Repositories
         IEnumerable<Configuration> getConfigurationList();
         Configuration saveConfiguration(Configuration configuration);
         Configuration updateConfiguration(Configuration configuration);
+        void deleteConfiguration(Guid id);
 
     }
 }
