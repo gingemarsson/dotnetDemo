@@ -1,6 +1,7 @@
+using DotnetDemo.Repositories;
+using DotnetDemo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +25,10 @@ namespace DotnetDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options =>
+            {
+                options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+            });
 
             services.AddSwaggerGen(swagger =>
             {
@@ -42,6 +46,9 @@ namespace DotnetDemo
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddSingleton<IConfigurationRepository, ConfigurationRepository>();
+            services.AddTransient<IConfigurationService, ConfigurationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

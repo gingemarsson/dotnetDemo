@@ -7,7 +7,7 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                Demo
+                <a href="/swagger">Swagger</a>
             </div>
         );
     }
