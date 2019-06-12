@@ -52,9 +52,8 @@ class Controls extends React.Component {
     render() {
         return (
             <div className="controls">
-                <input
-                    type="text" placeholder="Name" name="name" onChange={(e) => this.handleChange(e)} />
-                <input type="submit" value="Save" onClick={() => this.props.onClick(this.state.name)} />
+                <input type="text" placeholder="Name" name="name" onChange={(e) => this.handleChange(e)} onKeyDown={(e) => { if (e.keyCode == 13) { this.props.onClick(this.state.name) }}} />
+                <input type="submit" value="Save" className="btnSave" disabled={!this.state.name} onClick={() => this.props.onClick(this.state.name)} />
             </div>
         );
     }
@@ -63,21 +62,31 @@ class Controls extends React.Component {
 // The list of available configurations
 class List extends React.Component {
     render() {
-        return (
-            <div className="list"><ul>
-                {this.props.list.map((configuration) => {
-                    return (
-                        <li className="listItem">
-                            <span className="name">{configuration.name} ({configuration.id})</span>
-                            <div className="listControls">
-                                <button onClick={() => this.props.onApplyClick(configuration.id)}>Apply</button>
-                                <button onClick={() => this.props.onDeleteClick(configuration.id)}>Delete</button>
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul></div>
-        );
+        if (this.props.list.length > 0) {
+            return (
+                <div className="list"><h1>Saved configurations</h1><ul>
+                    {this.props.list.map((configuration) => {
+                        return (
+                            <li className="listItem">
+                                <span className="name">{configuration.name}</span>
+                                <div className="listControls">
+                                    <button className="btnApply" onClick={() => this.props.onApplyClick(configuration.id)}>Apply</button>
+                                    <button className="btnDelete" onClick={() => this.props.onDeleteClick(configuration.id)}>Delete</button>
+                                </div>
+                            </li>
+                        )
+                    })}
+                </ul></div>
+            );
+        }
+        else {
+            return (
+                <div className="list">
+                    <h1>Saved configurations</h1>
+                    <span className="noList">Save a configuration and it will appear here</span>
+                </div>
+            )
+        }
     }
 }
 
@@ -125,8 +134,8 @@ class Main extends React.Component {
 
         this.setState({
             currentConfiguration: {
-                id: this.state.currentConfiguration.id.slice(),
-                name: this.state.currentConfiguration.name.slice(),
+                id: this.state.currentConfiguration.id,
+                name: this.state.currentConfiguration.name,
                 grid: grid
             },
             configurationList: this.state.configurationList
@@ -171,8 +180,6 @@ class Main extends React.Component {
                     onDeleteClick={(id) => this.handleDeleteClick(id)}
 
                 />
-
-                <a href="/swagger">Swagger</a>
             </div>
         );
     }

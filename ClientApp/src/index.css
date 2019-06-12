@@ -1,7 +1,57 @@
 body {
-    max-width: 700px;
+    max-width: 850px;
     margin: auto;
     padding: 30px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    background: #eee;
+    color: #777;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #222;
+    font-weight: 300;
+    font-size: 1.3em;
+}
+
+/* Buttons */
+button, input[type="submit"] {
+    border: 0px;
+    margin: 2px;
+    background-color: #777;
+    color: #fff;
+    width: 100px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+html .btnSave, html .btnApply {
+    background-color: #138b00;
+}
+
+    html .btnSave:active, html .btnApply:active {
+        background-color: #027000;
+    }
+
+html .btnDelete {
+    background-color: #9b2300;
+}
+
+    html .btnDelete:active {
+        background-color: #800300;
+    }
+
+button:disabled, input[type="submit"]:disabled {
+    background-color: #999;
+}
+
+/* Boxes */
+.grid, .controls, .list {
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    padding: 15px;
 }
 
 /* Grid */
@@ -13,19 +63,22 @@ body {
 
     .grid button {
         flex: 1;
-        height: 60px;
+        height: 75px;
     }
 
     .grid .status-Default {
-        background-color: #444
+        background-color: #444;
+        background: linear-gradient(60deg, #454545, #424242);
     }
 
     .grid .status-Ok {
-        background-color: #4cff00
+        background-color: #1db405;
+        background: linear-gradient(60deg, #2fbc0f, #1db405);
     }
 
     .grid .status-Error {
-        background-color: #ff0000
+        background-color: #cb2601;
+        background: linear-gradient(60deg, #db3611, #cb2601);
     }
 
 
@@ -33,41 +86,61 @@ body {
 .controls {
     margin-top: 20px;
     margin-bottom: 20px;
-    border: 1px solid #444;
-    padding: 15px;
     display: flex;
 }
 
     .controls input[type="text"] {
         flex: 1;
-        margin-right: 15px;
+        margin: 2px;
+        margin-right: 10px;
+        border: 1px solid #bbb;
     }
 
     .controls input[type="submit"] {
-        width: 50px;
         height: 35px;
     }
 
 /* List */
-.list ul {
-    padding: 0px;
-}
-.listItem {
-    margin: 0;
-    border-bottom: 1px dotted #AAA;
-    padding: 10px;
-    display: flex;
+.list {
+    padding-bottom: 0px;
 }
 
-    .listItem .name {
-        flex: 1;
+    .list ul {
+        padding: 0px;
+        padding-bottom: 8px;
     }
 
-    .listItem .listControls {
-        height: 35px;
+    .list .listItem {
+        margin: 0;
+        border-bottom: 1px dotted #AAA;
+        padding: 10px 0;
+        display: flex;
     }
 
-        .listItem .listControls button {
-            height: 35px;
-            /*width: 35px;*/
+        .list .listItem:last-child {
+            border-bottom: 0px dotted #AAA;
         }
+
+        .list .listItem .name {
+            flex: 1;
+            margin-top: 8px;
+        }
+
+        .list .listItem .listControls {
+            height: 35px;
+        }
+
+            .list .listItem .listControls button {
+                height: 35px;
+                margin-left: 10px;
+            }
+
+    .list .noList {
+        display: block;
+        text-align: center;
+        width: 100%;
+        color: #777;
+        padding-top: 45px;
+        padding-bottom: 45px;
+        font-style: italic;
+    }
