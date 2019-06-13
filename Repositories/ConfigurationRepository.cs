@@ -17,23 +17,23 @@ namespace DotnetDemo.Repositories
             database = new Dictionary<Guid, Configuration>();
         }
 
-        public Configuration getConfiguration(Guid id)
+        public Configuration get(Guid id)
         {
             return database[id];
         }
 
-        public IEnumerable<Configuration> getConfigurationList()
+        public IEnumerable<Configuration> getList()
         {
             return database.Values;
         }
 
-        public Configuration saveConfiguration(Configuration configuration)
+        public Configuration save(Configuration configuration)
         {
             database.Add(configuration.Id, configuration);
             return configuration;
         }
 
-        public Configuration updateConfiguration(Configuration configuration)
+        public Configuration update(Configuration configuration)
         {
             if (database.ContainsKey(configuration.Id))
             {
@@ -43,22 +43,12 @@ namespace DotnetDemo.Repositories
             else { return null; }
         }
         
-        public void deleteConfiguration(Guid id)
+        public void delete(Guid id)
         {
             if (database.ContainsKey(id))
             {
                 database.Remove(id);
             }
         }
-    }
-
-    public interface IConfigurationRepository
-    {
-        Configuration getConfiguration(Guid id);
-        IEnumerable<Configuration> getConfigurationList();
-        Configuration saveConfiguration(Configuration configuration);
-        Configuration updateConfiguration(Configuration configuration);
-        void deleteConfiguration(Guid id);
-
     }
 }

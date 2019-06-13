@@ -26,7 +26,7 @@ namespace DotnetDemo.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Configuration>> GetList()
         {
-            return _service.getConfigurationList().ToList();
+            return _service.getList().ToList();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace DotnetDemo.Controllers
         [HttpGet("{id}")]
         public ActionResult<Configuration> Get([FromRoute] Guid id)
         {
-            return _service.getConfiguration(id);
+            return _service.get(id);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace DotnetDemo.Controllers
                 Name = configurationRequest.Name,
                 Grid = configurationRequest.Grid
             };
-            return _service.addConfiguration(configuration);
+            return _service.add(configuration);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace DotnetDemo.Controllers
                 Name = configurationRequest.Name,
                 Grid = configurationRequest.Grid
             };
-            return _service.updateConfiguration(configuration);
+            return _service.update(configuration);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace DotnetDemo.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete([FromRoute] Guid id)
         {
-            _service.deleteConfiguration(id);
+            _service.delete(id);
             return Ok();
         }
     }

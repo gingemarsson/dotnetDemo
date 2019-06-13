@@ -13,22 +13,13 @@ namespace DotnetDemo.Services
             _repository = repository;
         }
 
-        public Configuration getConfiguration(Guid id) { return _repository.getConfiguration(id); }
+        public Configuration get(Guid id) { return _repository.get(id); }
 
-        public IEnumerable<Configuration> getConfigurationList() { return _repository.getConfigurationList(); }
+        public IEnumerable<Configuration> getList() { return _repository.getList(); }
 
-        public Configuration addConfiguration(Configuration configuration) { return _repository.saveConfiguration(configuration); }
+        public Configuration add(Configuration configuration) { return _repository.save(configuration); }
 
-        public Configuration updateConfiguration(Configuration configuration) { return _repository.updateConfiguration(configuration); }
-        public void deleteConfiguration(Guid id) { _repository.deleteConfiguration(id); }
-    }
-
-    public interface IConfigurationService
-    {
-        Configuration getConfiguration(Guid id);
-        IEnumerable<Configuration> getConfigurationList();
-        Configuration addConfiguration(Configuration configuration);
-        Configuration updateConfiguration(Configuration configuration);
-        void deleteConfiguration(Guid id);
+        public Configuration update(Configuration configuration) { return _repository.update(configuration); }
+        public void delete(Guid id) { _repository.delete(id); }
     }
 }
